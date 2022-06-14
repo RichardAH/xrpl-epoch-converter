@@ -1,0 +1,32 @@
+<html>
+    <head>
+        <title>XRPL epoch time converter</title>
+    </head>
+    <body>
+        <script>
+            function process()
+            {
+                const inp = parseInt(document.getElementById('inp').value);
+
+                let out = '<table>';
+
+                let ts = inp + 946681200;
+                let date = new Date(ts * 1000);
+
+                out += '<tr><td>Unix timestamp:</td><td>' + ts + '</td></tr>';
+                out += '<tr><td>Human readable:</td><td>' + 
+                                date.getDate() + 
+                                  "/"+(date.getMonth()+1)+
+                                  "/"+date.getFullYear()+
+                                  " "+date.getHours()+
+                                  ":"+date.getMinutes()+
+                                  ":"+date.getSeconds() +
+                                ' UTC</td></tr>';
+                out += '</table>';
+                document.getElementById('out').innerHTML = out; 
+            }
+        </script>
+        <input type="text" id="inp" placeholder="paste XRPL time here" onchange="process()">
+        <div id="out"></div>
+    </body>
+<html>
